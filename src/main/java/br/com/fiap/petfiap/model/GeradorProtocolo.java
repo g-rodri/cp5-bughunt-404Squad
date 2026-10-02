@@ -16,7 +16,7 @@ public class GeradorProtocolo {
 
     public static GeradorProtocolo getInstancia() {
         if (instancia == null) {
-            return new GeradorProtocolo();
+             instancia = new GeradorProtocolo(); //pelo compilador podemos ver que o código gerava 3 instancias quando deveria gerar só uma, com essa modificação agora só vai haver uma instancia constante
         }
         return instancia;
     }
