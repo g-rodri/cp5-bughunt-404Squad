@@ -123,4 +123,18 @@ public class AgendaServiceTest {
         verify(repository, never()).findByPetNome(any());
         verify(repository, never()).save(any());
     }
+
+    @Test
+    public void deveRecusarCancelamentoDeAtendimentoJaConcluido() {
+        // Arrange: atendimento que ja foi realizado
+        Banho jaConcluido = banhoDoRexAmanha10h();
+        jaConcluido.setStatus("CONCLUIDO");
+        when(repository.findById(1L)).thenReturn(Optional.of(jaConcluido));
+
+        // Act + Assert: atendimento ja realizado nao pode ser cancelado
+        assertThrows(StatusInvalidoException.class, () -> service.cancelar(1L));
+
+        // Nada e salvo quando a operacao e recusada
+        verify(repository, never()).save(any());
+    }
 }
