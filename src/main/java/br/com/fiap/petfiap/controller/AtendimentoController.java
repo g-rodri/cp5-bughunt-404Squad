@@ -94,7 +94,7 @@ public class AtendimentoController {
         }
     }
 
-    // POST /api/atendimentos/{id}/cancelamento - Cancelar atendimento
+    // POST /api/atendimentos - Agendar atendimento (params: tipo, petNome, porte, tutorNome, dataHora)
     @PostMapping("/{id}/cancelamento")
     public ResponseEntity<Atendimento> cancelar(@PathVariable Long id) {
         try {
@@ -104,13 +104,5 @@ public class AtendimentoController {
         } catch (StatusInvalidoException e) {
             return ResponseEntity.status(409).build();
         }
-    }
-
-    // -----------------------------------------------------------------
-    // Fidelidade (futuro) - implementar quando o time aprovar:
-    // - desconto de 10% para tutores com mais de 500 pontos
-    // - dobro de pontos em novembro amarelo (castracao)
-    private double calcularDescontoFidelidade(int pontos) {
-        return pontos * 0.1;
     }
 }
