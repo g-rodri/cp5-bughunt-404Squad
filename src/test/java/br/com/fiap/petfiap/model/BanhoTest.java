@@ -23,11 +23,15 @@ public class BanhoTest {
     }
 
     @Test
-    public void deveDurar45Minutos() {
-        // Act
-        int duracao = banhoDoRex().getDuracaoMinutos();
+    public void deveCobrarPrecoPorPorteQuandoForBanho() {
+        // Arrange: um banho para cada porte
+        Banho pequeno = new Banho(1, "Rex", "PEQUENO", "Ana", LocalDateTime.of(2026, 10, 1, 10, 0));
+        Banho medio = new Banho(2, "Mimi", "MEDIO", "Bruno", LocalDateTime.of(2026, 10, 1, 11, 0));
+        Banho grande = new Banho(3, "Thor", "GRANDE", "Carla", LocalDateTime.of(2026, 10, 1, 12, 0));
 
-        // Assert
-        assertEquals(45, duracao);
+        // Act + Assert: tabela de precos do contrato
+        assertEquals(60.0, pequeno.calcularPreco(), 0.001);
+        assertEquals(80.0, medio.calcularPreco(), 0.001);
+        assertEquals(100.0, grande.calcularPreco(), 0.001);
     }
 }
