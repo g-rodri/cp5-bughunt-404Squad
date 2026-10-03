@@ -23,6 +23,15 @@ public class BanhoTest {
     }
 
     @Test
+    public void deveDurar45Minutos() {
+        // Act
+        int duracao = banhoDoRex().getDuracaoMinutos();
+
+        // Assert
+        assertEquals(45, duracao);
+    }
+
+    @Test
     public void deveCobrarPrecoPorPorteQuandoForBanho() {
         // Arrange: um banho para cada porte
         Banho pequeno = new Banho(1, "Rex", "PEQUENO", "Ana", LocalDateTime.of(2026, 10, 1, 10, 0));
