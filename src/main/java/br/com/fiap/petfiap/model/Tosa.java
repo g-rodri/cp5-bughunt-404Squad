@@ -42,4 +42,3 @@ public class Tosa extends Atendimento {
         return 60;
     }
 }
-}
